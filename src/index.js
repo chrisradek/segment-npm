@@ -12,10 +12,32 @@ loadBtn.addEventListener("click", () => {
 
   const writeKey = document.getElementById("writeKey").value;
   // Include any integrations in the `classicIntegrations` array.
+  // The integrations will use the source settings fetched by a.js.
   analytics.load({
     writeKey,
     classicIntegrations: [GTM],
   });
+
+  // This example is the same as above except it illustrates overriding
+  // settings for the integration.
+  // These overrides are merged into the source settings fetched by a.js,
+  // and can be used to add an integration without defining it through the app.
+  // analytics.load(
+  //   {
+  //     writeKey,
+  //     classicIntegrations: [GTM],
+  //   },
+  //   {
+  //     integrations: {
+  //       [GTM.prototype.name]: {
+  //         environment: "dev",
+  //       },
+  //       "Google Tag Manager": {
+  //         environment: "dev",
+  //       },
+  //     },
+  //   }
+  // );
 });
 
 trackBtn.addEventListener("click", () => {
