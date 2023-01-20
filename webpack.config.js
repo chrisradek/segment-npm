@@ -1,7 +1,10 @@
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+    segment: "./src/segment.js",
+  },
   mode: "none",
   output: {
     filename: "[name].js",
