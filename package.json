@@ -18,12 +18,20 @@
   },
   "homepage": "https://github.com/chrisradek/segment-npm#readme",
   "devDependencies": {
-    "http-server": "^14.1.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0"
+    "http-server": "^14.1.1"
   },
   "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/runtime": "^7.11.2",
+    "babel-loader": "^8.1.0",
+    "crypto-js": "^4.0.0",
+    "md5": "^2.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
     "@segment/analytics-next": "^1.47.0",
-    "@segment/analytics.js-integration-google-tag-manager": "^2.5.1"
+    "@segment/analytics.js-integration-google-tag-manager": "^2.5.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7"
   }
 }
