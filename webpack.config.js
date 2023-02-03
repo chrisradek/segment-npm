@@ -15,6 +15,28 @@ module.exports = {
       maxChunks: 1,
     }),
   ],
+  optimization: {
+    splitChunks: {
+      minSize: 0,
+      maxInitialRequests: Infinity,
+      cacheGroups: {
+        ajs: {
+          chunks: "all",
+          minChunks: 2,
+          enforce: true,
+          name: "ajs",
+          test(module) {
+            if (module.isEntryModule()) {
+              return false;
+            }
+
+            return isSegmentDependency(module);
+          },
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
@@ -37,3 +59,17 @@ module.exports = {
     ],
   },
 };
+
+function isSegmentDependency(module) {
+  const SEGMENT_REGEX = /[\\/]node_modules[\\/]\@segment[\\/]/;
+
+  while (module) {
+    if (module.identifier().match(SEGMENT_REGEX)) {
+      return true;
+    }
+
+    module = module.issuer;
+  }
+
+  return false;
+}
