@@ -2,8 +2,16 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: "./src/index.js",
-    segment: "./src/segment.js",
+    dependency: "./src/dependency.js",
+
+    app: {
+      import: "./src/index.js",
+      dependOn: ["dependency"],
+    },
+    segment: {
+      import: "./src/segment.js",
+      dependOn: ["dependency"],
+    },
   },
   mode: "none",
   output: {
